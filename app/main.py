@@ -4,7 +4,11 @@ from fastapi import FastAPI
 from starlette.staticfiles import StaticFiles
 from starlette.responses import FileResponse
 
+from apis.practice_apis import user_router
+
 app = FastAPI()
+
+app.include_router(user_router)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 # 'static' 폴더를 '/static' 경로로 마운트 (CSS, JS 파일 서빙용)
