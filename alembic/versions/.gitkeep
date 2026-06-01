@@ -1,0 +1,2 @@
+# Alembic 마이그레이션 버전 파일들이 이 디렉터리에 생성됩니다.
+# uv run alembic revision --autogenerate -m "설명" 명령으로 파일이 자동 생성됩니다.
