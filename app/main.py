@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -11,6 +12,13 @@ app = FastAPI()
 app.include_router(user_router)
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# 만약 static, media 폴더가 존재하지 않으면 생성
+if not (BASE_DIR / "static").exists():
+    os.mkdir(BASE_DIR / "static")
+if not (BASE_DIR / "media").exists():
+    os.mkdir(BASE_DIR / "media")
+
 # 'static' 폴더를 '/static' 경로로 마운트 (CSS, JS 파일 서빙용)
 app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 # 'media' 폴더를 '/media' 경로로 마운트 (사용자 업로드 파일 서빙용)
